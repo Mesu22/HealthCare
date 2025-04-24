@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCare - Modern Healthcare Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Add Bootstrap Icons CSS before other styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(37,99,235,0.9), rgba(30,64,175,0.9)), url('https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: white;
+            transform: skewY(-3deg);
+        }
+        
+        .navbar {
+            background: rgba(255,255,255,0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .service-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            overflow: hidden;
+            background: white;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: all 0.4s;
+            z-index: -1;
+            border-radius: 20px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover .feature-icon,
+        .service-card:hover .card-title,
+        .service-card:hover .card-text {
+            color: white !important;
+            -webkit-text-fill-color: white;
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            transition: all 0.4s;
+        }
+
+        .service-card .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            transition: all 0.4s;
+        }
+
+        .service-card .card-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            transition: all 0.4s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37,99,235,0.3);
+        }
+
+        #profile {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 100px 0;
+        }
+
+        .profile-container {
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .profile-title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .profile-body {
+            padding: 40px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        .info-content h6 {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .info-content p {
+            margin: 0;
+            color: #64748b;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-badge {
+            padding: 8px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .blog-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .blog-card .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.4s;
+        }
+
+        .blog-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .blog-card .card-body {
+            padding: 2rem;
+        }
+
+        .blog-card .card-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .blog-card .card-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-meta {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: #e2e8f0;
+            color: #475569;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+
+        /* Modal styles */
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+        }
+
+        .modal-header {
+            border-bottom: none;
+            padding: 2rem 2rem 1rem;
+        }
+
+        .modal-body {
+            padding: 1rem 2rem 2rem;
+        }
+
+        .modal-title {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Order section styles */
+        #order {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        }
+
+        .order-card {
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .order-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .order-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .order-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .order-steps {
+            padding: 2rem;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 15px;
+            background: #f8fafc;
+            transition: all 0.3s;
+        }
+
+        .step-item:hover {
+            background: #f1f5f9;
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h6 {
+            margin: 0;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .step-content p {
+            margin: 0.5rem 0 0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Package section styles */
+        .package-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .package-card.premium {
+            border: 2px solid var(--primary-color);
+        }
+
+        .package-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
+        }
+
+        .package-tag {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            background: #fbbf24;
+            color: #92400e;
+            padding: 4px 12px;
+            border-radius: 0 0 10px 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .package-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .package-price .currency {
+            font-size: 1rem;
+            font-weight: 500;
+            vertical-align: top;
+            margin-right: 4px;
+        }
+
+        .package-price .period {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .package-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            color: #4b5563;
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-features i {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">HealthCare</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profile">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#packages">Paket</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#order">Pemesanan</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Beranda Section -->
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="container text-center" data-aos="fade-up">
+            <h1 class="display-2 fw-bold mb-4">Mengubah Layanan Kesehatan untuk Masa Depan yang Lebih Baik</h1>
+            <p class="lead mb-5 fw-normal">Rasakan layanan kesehatan kelas dunia dengan teknologi terkini dan perawatan yang penuh kasih</p>
+            <a href="#services" class="btn btn-primary btn-lg me-3">Lihat Layanan</a>
+            <a href="#order" class="btn btn-outline-light btn-lg">Pesan Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="py-5">
+        <div class="container">
+            <div class="row align-items-center" data-aos="fade-up">
+                <div class="col-md-4 text-center">
+                    <div class="profile-image-container mb-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuAAvbI-ynvSa_Hy0qb59W5-62hMgzb7e-6w&s" alt="Developer Photo" class="rounded-circle img-fluid shadow" style="width: 200px; height: 200px; object-fit: cover;">
+                    </div>
+                    <h2 class="fw-bold mb-2">Mesa Nur Pratama</h2>
+                    <p class="text-muted mb-3">Web Developer</p>
+                    <div class="social-links mb-4">
+                        <a href="https://github.com/Mesu22" class="btn btn-light mx-1"><i class="bi bi-github"></i></a>
+                        <a href="https://www.instagram.com/mesaa.shu?igsh=bDM1aHYyYjNicGJ1" class="btn btn-light mx-1"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="accordion" id="profileAccordion">
+                        <div class="accordion-item border-0 shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#personalInfo">
+                                    Personal Information
+                                </button>
+                            </h2>
+                            <div id="personalInfo" class="accordion-collapse collapse show" data-bs-parent="#profileAccordion">
+                                <div class="accordion-body">
+                                    <div class="row g-4">
+                                        <div class="col-md-6">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                                    <i class="bi bi-person text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <small class="text-muted d-block">Nama Lengkap</small>
+                                                    <span class="fw-medium">Mesa Nur Pratama</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                                    <i class="bi bi-calendar text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <small class="text-muted d-block">Tempat, Tanggal Lahir</small>
+                                                    <span class="fw-medium">Langam, 22 Mei 2006</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                                    <i class="bi bi-book text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <small class="text-muted d-block">Jurusan</small>
+                                                    <span class="fw-medium">Rekayasa Perangkat Lunak</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                                    <i class="bi bi-building text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <small class="text-muted d-block">Sekolah</small>
+                                                    <span class="fw-medium">SMK Muhammadiyah 1 Yogyakarta</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                                    <i class="bi bi-geo-alt text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <small class="text-muted d-block">Alamat</small>
+                                                    <span class="fw-medium">Jl. Kiageng Pemanahan No. 48A Sorosutan, Yogyakarta</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                                    <i class="bi bi-envelope text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <small class="text-muted d-block">Email</small>
+                                                    <span class="fw-medium">mesab520@gmail.com</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 shadow-sm mt-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#skillsInfo">
+                                    Skills
+                                </button>
+                            </h2>
+                            <div id="skillsInfo" class="accordion-collapse collapse" data-bs-parent="#profileAccordion">
+                                <div class="accordion-body">
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">HTML</span>
+                                        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">CSS</span>
+                                        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">JavaScript</span>
+                                        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">PHP</span>
+                                        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">MySQL</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-2" data-aos="fade-up">Layanan Kami</h2>
+            <p class="text-center text-muted mb-5" data-aos="fade-up">Solusi kesehatan komprehensif yang disesuaikan dengan kebutuhan Anda</p>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card h-100">
+                        <div class="card-body text-center p-5">
+                            <i class="bi bi-heart-pulse feature-icon"></i>
+                            <h5 class="card-title">Konsultasi Dokter</h5>
+                            <p class="card-text text-muted">Konsultasi langsung dengan dokter spesialis berpengalaman</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card h-100">
+                        <div class="card-body text-center p-5">
+                            <i class="bi bi-capsule feature-icon"></i>
+                            <h5 class="card-title">Farmasi Online</h5>
+                            <p class="card-text text-muted">Layanan pembelian obat dengan resep dokter secara online</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card h-100">
+                        <div class="card-body text-center p-5">
+                            <i class="bi bi-hospital feature-icon"></i>
+                            <h5 class="card-title">Layanan Darurat</h5>
+                            <p class="card-text text-muted">Pelayanan 24 jam dengan tim respons cepat</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card h-100">
+                        <div class="card-body text-center p-5">
+                            <i class="bi bi-clipboard2-pulse feature-icon"></i>
+                            <h5 class="card-title">Medical Check-up</h5>
+                            <p class="card-text text-muted">Pemeriksaan kesehatan menyeluruh dengan teknologi modern</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-2" data-aos="fade-up">Artikel Kesehatan Terkini</h2>
+            <p class="text-center text-muted mb-5" data-aos="fade-up">Temukan informasi kesehatan terpercaya dan tips hidup sehat</p>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528" class="card-img-top" alt="Health Article">
+                        <div class="card-body">
+                            <div class="blog-meta">
+                                <i class="bi bi-calendar-event me-2"></i>15 Juli 2023
+                                <i class="bi bi-person ms-3 me-2"></i>Dr. Sarah Johnson
+                            </div>
+                            <span class="blog-tag">Kesehatan Digital</span>
+                            <span class="blog-tag">Lifestyle</span>
+                            <h5 class="card-title">Tips Menjaga Kesehatan di Era Digital</h5>
+                            <p class="card-text">Pelajari cara menjaga keseimbangan hidup sehat di tengah gaya hidup modern yang serba digital. Temukan strategi efektif untuk tetap bugar.</p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#article1Modal">Baca Selengkapnya</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352" class="card-img-top" alt="Nutrition Article">
+                        <div class="card-body">
+                            <div class="blog-meta">
+                                <i class="bi bi-calendar-event me-2"></i>12 Juli 2023
+                                <i class="bi bi-person ms-3 me-2"></i>Dr. Michael Brown
+                            </div>
+                            <span class="blog-tag">Nutrisi</span>
+                            <span class="blog-tag">Diet</span>
+                            <h5 class="card-title">Panduan Lengkap Nutrisi Seimbang</h5>
+                            <p class="card-text">Pahami pentingnya nutrisi seimbang dan bagaimana menerapkannya dalam menu harian Anda. Tips praktis menyusun menu sehat.</p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#article2Modal">Baca Selengkapnya</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c" class="card-img-top" alt="Mental Health Article">
+                        <div class="card-body">
+                            <div class="blog-meta">
+                                <i class="bi bi-calendar-event me-2"></i>10 Juli 2023
+                                <i class="bi bi-person ms-3 me-2"></i>Dr. Emily Wilson
+                            </div>
+                            <span class="blog-tag">Mental Health</span>
+                            <span class="blog-tag">Wellness</span>
+                            <h5 class="card-title">Menjaga Kesehatan Mental di Era Modern</h5>
+                            <p class="card-text">Temukan cara-cara efektif untuk menjaga kesehatan mental di tengah tantangan kehidupan modern. Strategi praktis untuk keseimbangan hidup.</p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#article3Modal">Baca Selengkapnya</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Modals -->
+    <div class="modal fade" id="article1Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tips Menjaga Kesehatan di Era Digital</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Di era digital yang serba cepat ini, menjaga kesehatan menjadi tantangan tersendiri. Berikut adalah tips lengkap untuk menjaga kesehatan Anda:</p>
+                    
+                    <h6 class="fw-bold mt-4">1. Atur Waktu Penggunaan Gadget</h6>
+                    <p>Batasi penggunaan gadget, terutama sebelum tidur. Gunakan fitur night mode dan jaga jarak pandang yang tepat dari layar.</p>
+                    
+                    <h6 class="fw-bold mt-4">2. Tetap Aktif Secara Fisik</h6>
+                    <p>Sisipkan aktivitas fisik di antara rutinitas digital. Lakukan peregangan setiap 30 menit dan jalan-jalan singkat.</p>
+                    
+                    <h6 class="fw-bold mt-4">3. Jaga Pola Makan</h6>
+                    <p>Hindari kebiasaan makan sambil bekerja di depan komputer. Fokus pada makanan saat jam makan.</p>
+                    
+                    <h6 class="fw-bold mt-4">4. Istirahat yang Cukup</h6>
+                    <p>Pastikan mendapatkan 7-8 jam tidur setiap malam. Matikan notifikasi gadget saat istirahat.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="article2Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Panduan Lengkap Nutrisi Seimbang</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Nutrisi seimbang adalah kunci utama kesehatan optimal. Berikut panduan lengkap untuk mencapai nutrisi seimbang:</p>
+                    
+                    <h6 class="fw-bold mt-4">1. Komposisi Makanan</h6>
+                    <p>Pastikan setiap piring makan mengandung karbohidrat (30%), protein (20%), sayuran (30%), dan lemak sehat (20%).</p>
+                    
+                    <h6 class="fw-bold mt-4">2. Waktu Makan</h6>
+                    <p>Atur jadwal makan teratur dengan interval 4-5 jam. Jangan lewatkan sarapan.</p>
+                    
+                    <h6 class="fw-bold mt-4">3. Pilihan Makanan</h6>
+                    <p>Utamakan makanan segar dan hindari makanan olahan. Perbanyak konsumsi sayur dan buah.</p>
+                    
+                    <h6 class="fw-bold mt-4">4. Hidrasi</h6>
+                    <p>Minum minimal 8 gelas air sehari. Kurangi minuman manis dan berkafein.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="article3Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Menjaga Kesehatan Mental di Era Modern</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Kesehatan mental sama pentingnya dengan kesehatan fisik. Berikut cara-cara efektif menjaga kesehatan mental:</p>
+                    
+                    <h6 class="fw-bold mt-4">1. Manajemen Stres</h6>
+                    <p>Kenali pemicu stres dan kembangkan strategi coping yang sehat seperti meditasi atau yoga.</p>
+                    
+                    <h6 class="fw-bold mt-4">2. Hubungan Sosial</h6>
+                    <p>Jaga komunikasi dengan keluarga dan teman. Bangun dukungan sosial yang positif.</p>
+                    
+                    <h6 class="fw-bold mt-4">3. Self-Care</h6>
+                    <p>Luangkan waktu untuk diri sendiri. Lakukan hobi dan aktivitas yang menyenangkan.</p>
+                    
+                    <h6 class="fw-bold mt-4">4. Profesional Help</h6>
+                    <p>Jangan ragu mencari bantuan profesional jika diperlukan. Mental health adalah prioritas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Packages Section -->
+    <section id="packages" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-2" data-aos="fade-up">Paket Layanan</h2>
+            <p class="text-center text-muted mb-5" data-aos="fade-up">Pilih paket layanan kesehatan yang sesuai dengan kebutuhan Anda</p>
+            <div class="row g-4">
+                <!-- Basic Package -->
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="package-card">
+                        <div class="package-header text-center p-4">
+                            <div class="package-name">Basic Care</div>
+                            <div class="package-price">
+                                <span class="currency">Rp</span>
+                                <span class="amount">50.000</span>
+                                <span class="period">/bulan</span>
+                            </div>
+                        </div>
+                        <div class="package-body p-4">
+                            <ul class="package-features">
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Konsultasi Dokter Umum
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Medical Check-up Dasar
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Farmasi Online
+                                </li>
+                                <li>
+                                    <i class="bi bi-x-circle-fill text-muted me-2"></i>
+                                    Konsultasi Spesialis
+                                </li>
+                                <li>
+                                    <i class="bi bi-x-circle-fill text-muted me-2"></i>
+                                    Layanan Darurat 24/7
+                                </li>
+                            </ul>
+                            <button class="btn btn-outline-primary w-100 mt-4">Pilih Paket</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="package-card premium">
+                        <div class="package-header text-center p-4">
+                            <div class="package-tag">Terpopuler</div>
+                            <div class="package-name">Premium Care</div>
+                            <div class="package-price">
+                                <span class="currency">Rp</span>
+                                <span class="amount">200.000</span>
+                                <span class="period">/bulan</span>
+                            </div>
+                        </div>
+                        <div class="package-body p-4">
+                            <ul class="package-features">
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Semua fitur Basic Care
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Konsultasi Spesialis
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Medical Check-up Lengkap
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Prioritas Antrian
+                                </li>
+                                <li>
+                                    <i class="bi bi-x-circle-fill text-muted me-2"></i>
+                                    Layanan Darurat 24/7
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary w-100 mt-4">Pilih Paket</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ultimate Package -->
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="package-card">
+                        <div class="package-header text-center p-4">
+                            <div class="package-name">Ultimate Care</div>
+                            <div class="package-price">
+                                <span class="currency">Rp</span>
+                                <span class="amount">400.000</span>
+                                <span class="period">/bulan</span>
+                            </div>
+                        </div>
+                        <div class="package-body p-4">
+                            <ul class="package-features">
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Semua fitur Premium Care
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Layanan Darurat 24/7
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Home Visit
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Asuransi Kesehatan
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Konsultasi Unlimited
+                                </li>
+                            </ul>
+                            <button class="btn btn-outline-primary w-100 mt-4">Pilih Paket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-2" data-aos="fade-up">Informasi Pemesanan</h2>
+            <p class="text-center text-muted mb-5" data-aos="fade-up">Mudah dan cepat untuk mendapatkan layanan kesehatan terbaik</p>
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="order-steps">
+                        <div class="step-item d-flex align-items-start mb-4">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h6>Pilih Layanan</h6>
+                                <p>Pilih layanan kesehatan yang sesuai dengan kebutuhan Anda dari berbagai pilihan yang tersedia</p>
+                            </div>
+                        </div>
+                        <div class="step-item d-flex align-items-start mb-4">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h6>Isi Formulir</h6>
+                                <p>Lengkapi formulir pemesanan dengan data diri dan informasi medis yang diperlukan</p>
+                            </div>
+                        </div>
+                        <div class="step-item d-flex align-items-start mb-4">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h6>Pilih Jadwal</h6>
+                                <p>Tentukan waktu konsultasi yang paling nyaman sesuai dengan ketersediaan</p>
+                            </div>
+                        </div>
+                        <div class="step-item d-flex align-items-start mb-4">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h6>Pembayaran</h6>
+                                <p>Selesaikan pembayaran melalui berbagai metode pembayaran yang tersedia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card shadow-lg rounded-4 border-0">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-4 text-center">Mulai Pemesanan</h5>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Nama Lengkap">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control" placeholder="Nomor Telepon">
+                                </div>
+                                <div class="mb-3">
+                                    <select class="form-select">
+                                        <option selected disabled>Pilih Layanan</option>
+                                        <option>Konsultasi Dokter</option>
+                                        <option>Medical Check-up</option>
+                                        <option>Farmasi Online</option>
+                                        <option>Layanan Darurat</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Pesan Sekarang</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <h5 class="fw-bold mb-3">HealthCare</h5>
+                    <p class="mb-0">Transforming healthcare for a better tomorrow</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Mesa Nur Pratama XII RPL © 2025 | Rekayasa Perangkat Lunak <a href="https://smkmuh1-yog.sch.id" class="text-light text-decoration-none">SMK Muhiyo</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
